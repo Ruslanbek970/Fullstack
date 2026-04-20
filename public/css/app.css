@@ -1,13 +1,26 @@
 /* App-specific polish on top of Bootstrap 5 */
 
 :root {
-  --meme-surface: rgba(0, 0, 0, 0.18);
-  --meme-surface-border: rgba(255, 255, 255, 0.12);
+  --meme-surface: rgba(20, 30, 44, 0.84);
+  --meme-surface-border: rgba(148, 163, 184, 0.24);
+  --meme-bg: #0f172a;
+  --meme-muted: rgba(226, 232, 240, 0.8);
+  --meme-accent: #34d399;
+  --meme-accent-soft: rgba(52, 211, 153, 0.14);
 }
 
 [data-bs-theme="light"] {
-  --meme-surface: rgba(255, 255, 255, 0.7);
-  --meme-surface-border: rgba(0, 0, 0, 0.12);
+  --meme-surface: rgba(255, 255, 255, 0.9);
+  --meme-surface-border: rgba(125, 122, 207, 0.22);
+  --meme-bg: linear-gradient(180deg, #e0f2ff 0%, #fde9ff 100%);
+  --meme-muted: rgba(31, 41, 55, 0.78);
+  --meme-accent: #7c3aed;
+  --meme-accent-soft: rgba(124, 58, 237, 0.1);
+}
+
+.app-body {
+  background: var(--meme-bg) !important;
+  color: var(--meme-muted);
 }
 
 .meme-card-surface {
@@ -16,8 +29,40 @@
   backdrop-filter: blur(6px);
 }
 
+.navbar .nav-link,
+.navbar .navbar-text {
+  white-space: nowrap;
+}
+
+.navbar .dropdown-toggle {
+  min-width: 106px;
+}
+
+.rounded-circle {
+  object-fit: cover;
+}
+
+.role-user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--meme-surface-border);
+  border-radius: 999px;
+  margin: 0 8px 8px 0;
+  background: var(--meme-surface);
+}
+
+.role-user-chip img {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid var(--meme-surface-border);
+}
+
 .navbar .dropdown-menu {
   border-color: var(--meme-surface-border);
+  background: var(--meme-surface);
 }
 
 .ad-banner-toolbar .btn {
@@ -63,5 +108,88 @@
 
 .btn-outline-secondary {
   --bs-btn-border-color: var(--meme-surface-border);
+}
+
+.btn-warning,
+.btn-outline-warning {
+  --bs-btn-bg: var(--meme-accent);
+  --bs-btn-border-color: var(--meme-accent);
+  --bs-btn-color: #052e2b;
+  --bs-btn-hover-bg: #2cc08f;
+  --bs-btn-hover-border-color: #2cc08f;
+  --bs-btn-hover-color: #04211e;
+}
+
+.btn-outline-warning {
+  --bs-btn-bg: transparent;
+  --bs-btn-color: var(--meme-accent);
+}
+
+.meme-feed-grid .col-md-6,
+.meme-feed-grid .col-lg-4 {
+  display: flex;
+}
+
+.meme-unified-card {
+  width: 100%;
+  min-height: 330px;
+  border-color: var(--meme-surface-border) !important;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+}
+
+.meme-thumb-wrap {
+  width: 100%;
+}
+
+.meme-thumb-media {
+  width: 100%;
+  height: 170px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--meme-surface-border);
+  background: var(--meme-accent-soft);
+}
+
+.meme-thumb-media img,
+.meme-thumb-media video {
+  object-fit: cover;
+  display: block;
+}
+
+.compact-search {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+}
+
+.permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.perm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--meme-surface-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: var(--meme-accent-soft);
+}
+
+.role-perm-chip {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 4px 9px;
+  border: 1px solid var(--meme-surface-border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--meme-muted);
+}
+
+.user-role-select {
+  min-width: 190px;
+  max-width: 260px;
+  min-height: 92px;
 }
 

@@ -25,21 +25,24 @@
                                 @if($roleNames->count() <= 1 && $roleNames->first() === 'user')
                                     <span class="text-secondary">—</span>
                                 @else
-                                    {{ $roleNames->reject(fn($r) => $r === 'user')->join(', ') ?: '—' }}
+                                    {{ $roleNames->reject(fn($r) => $r === 'user')->map(fn($r) => __('site.role_labels.'.$r) !== 'site.role_labels.'.$r ? __('site.role_labels.'.$r) : $r)->join(', ') ?: '—' }}
                                 @endif
                             </div>
                             @can('role.manage')
                                 @if($u->id !== auth()->id())
-                                    <form action="{{ route('admin.users.roles', $u) }}" method="post" class="mt-1 d-flex gap-1 flex-wrap align-items-center">
-                                        @csrf
-                                        <select name="roles[]" class="form-select form-select-sm bg-body text-body border-secondary" multiple style="min-width:220px;max-width:360px;">
-                                            @foreach($roles as $r)
-                                                <option value="{{ $r->name }}" @selected($u->hasRole($r->name))>{{ $r->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <button class="btn btn-sm btn-outline-warning">{{ __('site.user_roles_save') }}</button>
-                                    </form>
-                                    <div class="small text-secondary mt-1">{{ __('site.user_roles_hint') }}</div>
+                                    <details class="mt-1">
+                                        <summary class="small text-secondary">{{ __('site.user_roles_edit') }}</summary>
+                                        <form action="{{ route('admin.users.roles', $u) }}" method="post" class="mt-1 d-flex gap-1 flex-wrap align-items-center">
+                                            @csrf
+                                            <select name="roles[]" class="form-select form-select-sm bg-body text-body border-secondary user-role-select" multiple>
+                                                @foreach($roles as $r)
+                                                    <option value="{{ $r->name }}" @selected($u->hasRole($r->name))>{{ __('site.role_labels.'.$r->name) !== 'site.role_labels.'.$r->name ? __('site.role_labels.'.$r->name) : $r->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button class="btn btn-sm btn-outline-warning">{{ __('site.user_roles_save') }}</button>
+                                        </form>
+                                        <div class="small text-secondary mt-1">{{ __('site.user_roles_hint') }}</div>
+                                    </details>
                                 @endif
                             @endcan
                         </td>

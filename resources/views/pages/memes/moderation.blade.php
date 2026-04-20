@@ -25,6 +25,9 @@
                     <div>
                         <div class="fw-bold">#{{ $m->id }} — {{ $m->title }}</div>
                         <div class="small text-secondary">{{ $m->category }} · {{ $m->user?->email ?? '—' }}</div>
+                        <div class="mt-1">
+                            <a href="{{ route('memes.show', $m) }}" class="small link-warning text-decoration-none">{{ __('site.home_open') }} →</a>
+                        </div>
                     </div>
                     <div class="d-flex flex-wrap gap-2 align-items-start">
                         <form action="{{ route('memes.publish', $m) }}" method="post" class="d-inline">

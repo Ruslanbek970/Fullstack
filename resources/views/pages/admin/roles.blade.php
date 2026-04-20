@@ -7,8 +7,14 @@
 
     @foreach($roles as $role)
         <div class="border border-secondary rounded p-3 mb-3 meme-card-surface">
-            <div class="fw-bold text-warning">{{ $role->name }}</div>
-            <div class="small mt-2">{{ $role->permissions->pluck('name')->sort()->join(', ') ?: '—' }}</div>
+            <div class="fw-bold text-warning">{{ __('site.role_labels.'.$role->name) !== 'site.role_labels.'.$role->name ? __('site.role_labels.'.$role->name) : $role->name }}</div>
+            <div class="small mt-2">
+                @forelse($role->permissions->pluck('name')->sort() as $perm)
+                    <span class="role-perm-chip">{{ __('site.permission_labels.'.$perm) !== 'site.permission_labels.'.$perm ? __('site.permission_labels.'.$perm) : $perm }}</span>
+                @empty
+                    —
+                @endforelse
+            </div>
 
             <div class="mt-3">
                 <div class="small text-secondary mb-2">{{ __('site.roles_users_in_role') }}</div>
@@ -30,5 +36,9 @@
     @endforeach
 
     <h2 class="h6 mt-4">{{ __('site.roles_all_permissions') }}</h2>
-    <p class="small">{{ $permissions->pluck('name')->sort()->join(', ') }}</p>
+    <div class="small">
+        @foreach($permissions->pluck('name')->sort() as $perm)
+            <span class="role-perm-chip">{{ __('site.permission_labels.'.$perm) !== 'site.permission_labels.'.$perm ? __('site.permission_labels.'.$perm) : $perm }}</span>
+        @endforeach
+    </div>
 @endsection

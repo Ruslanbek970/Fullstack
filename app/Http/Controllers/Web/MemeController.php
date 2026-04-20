@@ -20,6 +20,7 @@ class MemeController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:3000'],
             'remote_url' => ['nullable', 'string', 'max:8192'],
             'upload' => ['nullable', 'file', 'max:51200', 'mimes:jpeg,jpg,png,gif,webp,mp4,webm'],
         ]);
@@ -42,6 +43,7 @@ class MemeController extends Controller
             'user_id' => $request->user()->id,
             'title' => $validated['title'],
             'category' => $validated['category'],
+            'description' => $validated['description'] ?? null,
             'image' => $media['path'],
             'media_type' => $media['type'],
             'status' => Meme::STATUS_PENDING,
@@ -128,6 +130,7 @@ class MemeController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:3000'],
             'remote_url' => ['nullable', 'string', 'max:8192'],
             'upload' => ['nullable', 'file', 'max:51200', 'mimes:jpeg,jpg,png,gif,webp,mp4,webm'],
         ]);
@@ -143,6 +146,7 @@ class MemeController extends Controller
         $meme->update([
             'title' => $validated['title'],
             'category' => $validated['category'],
+            'description' => $validated['description'] ?? null,
             'image' => $media['path'],
             'media_type' => $media['type'],
             'status' => Meme::STATUS_PENDING,

@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="fw-bold mb-2">{{ __('site.permissions_roles') }}</div>
                 @forelse(auth()->user()->getRoleNames() as $role)
-                    <span class="badge bg-secondary me-1">{{ $role }}</span>
+                    <span class="badge bg-secondary me-1">{{ __('site.role_labels.'.$role) !== 'site.role_labels.'.$role ? __('site.role_labels.'.$role) : $role }}</span>
                 @empty
                     <span class="text-danger">{{ __('site.permissions_none') }}</span>
                 @endforelse
@@ -21,11 +21,14 @@
         <div class="card border-secondary bg-body">
             <div class="card-body">
                 <div class="fw-bold mb-2">{{ __('site.permissions_perms') }}</div>
-                <ul class="small mb-0 columns-2" style="columns:2;gap:1rem">
+                <div class="permissions-grid">
                     @foreach(auth()->user()->getAllPermissions()->pluck('name')->sort() as $perm)
-                        <li><code>{{ $perm }}</code></li>
+                        <span class="perm-chip">
+                            <span>✓</span>
+                            <span>{{ __('site.permission_labels.'.$perm) !== 'site.permission_labels.'.$perm ? __('site.permission_labels.'.$perm) : $perm }}</span>
+                        </span>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
 

@@ -52,7 +52,6 @@
                 @auth
                     <li class="nav-item d-flex align-items-center gap-2">
                         <img src="{{ auth()->user()->avatarUrl() }}" alt="" width="28" height="28" class="rounded-circle border border-secondary d-none d-lg-inline-block">
-                        <span class="navbar-text small text-secondary d-none d-md-inline">{{ auth()->user()->email }}</span>
                     </li>
                     <li class="nav-item"><a class="nav-link small" href="{{ route('account.profile') }}">{{ __('site.nav_profile') }}</a></li>
                     <li class="nav-item">

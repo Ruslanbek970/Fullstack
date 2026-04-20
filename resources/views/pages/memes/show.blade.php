@@ -11,6 +11,12 @@
             {{ $meme->category }} · статус <strong>{{ $meme->status }}</strong>
             @if($meme->user) · {{ $meme->user->email }} @endif
         </p>
+        @if($meme->description)
+            <div class="mb-3 p-3 border border-secondary rounded meme-card-surface">
+                <div class="small text-secondary mb-1">{{ __('site.meme_description') }}</div>
+                <div class="text-body-emphasis">{{ $meme->description }}</div>
+            </div>
+        @endif
 
         @if($meme->mediaUrl())
             <div class="mb-4">

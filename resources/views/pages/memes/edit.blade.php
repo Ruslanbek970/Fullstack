@@ -29,11 +29,15 @@
                 <input type="text" name="category" class="form-control bg-body text-body border-secondary" value="{{ old('category', $meme->category) }}" required maxlength="100">
             </div>
             <div class="mb-2">
+                <label class="form-label small">{{ __('site.meme_description') }}</label>
+                <textarea name="description" class="form-control bg-body text-body border-secondary" rows="3" maxlength="3000" placeholder="{{ __('site.meme_description_hint') }}">{{ old('description', $meme->description) }}</textarea>
+            </div>
+            <div class="mb-2">
                 <label class="form-label small">Новый файл</label>
                 <input type="file" name="upload" class="form-control bg-body text-body border-secondary" accept="image/*,video/mp4,video/webm,.webp">
             </div>
             <div class="mb-3">
-                <label class="form-label small">{{ __('site.search_placeholder') }}</label>
+                <label class="form-label small">{{ __('site.meme_remote_url') }}</label>
                 <input type="text" name="remote_url" class="form-control bg-body text-body border-secondary" value="{{ old('remote_url', str_starts_with((string) $meme->image, 'http') ? $meme->image : '') }}" placeholder="https:// или ссылка Google Картинок" autocomplete="off">
             </div>
             <button type="submit" class="btn btn-warning">{{ __('site.profile_save') }}</button>

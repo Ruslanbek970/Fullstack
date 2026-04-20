@@ -22,6 +22,10 @@
                 <input type="text" name="category" class="form-control bg-body text-body border-secondary" value="{{ old('category') }}" required maxlength="100">
             </div>
             <div class="mb-2">
+                <label class="form-label small">{{ __('site.meme_description') }}</label>
+                <textarea name="description" class="form-control bg-body text-body border-secondary" rows="3" maxlength="3000" placeholder="{{ __('site.meme_description_hint') }}">{{ old('description') }}</textarea>
+            </div>
+            <div class="mb-2">
                 <label class="form-label small">Файл с устройства</label>
                 <input type="file" name="upload" id="memeUploadInput" class="form-control bg-body text-body border-secondary" accept="image/*,video/mp4,video/webm,.webp">
                 <div id="memeFilePreview" class="mt-2 rounded border border-secondary overflow-hidden bg-black bg-opacity-10 d-none" style="max-height:280px;">

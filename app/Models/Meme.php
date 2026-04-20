@@ -29,6 +29,7 @@ class Meme extends Model
         'user_id',
         'title',
         'category',
+        'description',
         'image',
         'media_type',
         'status',

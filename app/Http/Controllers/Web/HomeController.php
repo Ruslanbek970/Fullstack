@@ -25,13 +25,28 @@ class HomeController extends Controller
 
         $memes = $query->latest('published_at')->paginate(12);
 
+        $popular = Meme::query()
+            ->published()
+            ->withCount(['likedBy', 'dislikedBy'])
+            ->orderByDesc('liked_by_count')
+            ->orderByDesc('published_at')
+            ->limit(4)
+            ->get();
+
+        $trending = Meme::query()
+            ->published()
+            ->withCount(['likedBy', 'dislikedBy'])
+            ->latest('published_at')
+            ->limit(4)
+            ->get();
+
         $categories = Meme::query()
             ->published()
             ->distinct()
             ->orderBy('category')
             ->pluck('category');
 
-        return view('pages.home', compact('memes', 'categories'));
+        return view('pages.home', compact('memes', 'popular', 'trending', 'categories'));
     }
 
     public function about(): View
