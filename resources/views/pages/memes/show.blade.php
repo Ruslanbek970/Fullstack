@@ -118,6 +118,10 @@
                     form.addEventListener('submit', function () {
                         try { localStorage.removeItem(key); } catch (e) {}
                     });
+                    document.addEventListener('submit', function (e) {
+                        if (!e || !e.target || e.target === form) return;
+                        try { localStorage.setItem(key, ta.value); } catch (e2) {}
+                    }, true);
                 })();
             </script>
         @endif

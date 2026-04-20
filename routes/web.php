@@ -45,6 +45,9 @@ Route::middleware(['auth', 'not_banned'])->group(function () {
     Route::post('/admin/users/{user}/unban', [AdminUserController::class, 'unban'])
         ->middleware('permission:user.ban')
         ->name('admin.users.unban');
+    Route::post('/admin/users/{user}/roles', [AdminUserController::class, 'setRoles'])
+        ->middleware('permission:role.manage')
+        ->name('admin.users.roles');
 
     Route::get('/memes/create', [MemeController::class, 'create'])
         ->middleware('permission:meme.create')

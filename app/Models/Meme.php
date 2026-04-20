@@ -100,7 +100,10 @@ class Meme extends Model
             return $this->image;
         }
 
-        return \Illuminate\Support\Facades\Storage::disk('public')->url(ltrim($this->image, '/'));
+        $relative = ltrim($this->image, '/');
+        $url = '/storage/'.ltrim(str_replace('\\', '/', $relative), '/');
+
+        return $url;
     }
 
     public function canBeViewedBy(?User $user): bool

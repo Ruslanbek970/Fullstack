@@ -18,6 +18,7 @@ class WelcomeRegisteredMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new \Illuminate\Mail\Mailables\Address('ruslanbek.tolametov@narxoz.kz', config('app.name')),
             subject: __('site.mail_welcome_subject'),
         );
     }

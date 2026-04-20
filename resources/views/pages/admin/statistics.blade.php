@@ -8,6 +8,8 @@
         <p class="small text-secondary mb-0">Данные из базы: лайки по категориям, статусы мемов, активность по будням, новые мемы за неделю.</p>
         <p class="small mt-2 mb-0">
             Всего мемов: <strong>{{ $polarExtra['memes_total'] }}</strong>
+            · Лайков: <strong>{{ $polarExtra['likes_total'] }}</strong>
+            · Дизлайков: <strong>{{ $polarExtra['dislikes_total'] }}</strong>
             · Комментариев за 7 дней: <strong>{{ $polarExtra['comments_week'] }}</strong>
         </p>
     </div>
@@ -46,6 +48,7 @@
 $(function () {
   const barLabels = @json($barLabels);
   const barData = @json($barData);
+  const barDataDislikes = @json($barDataDislikes);
   const pieLabels = @json($pieLabels);
   const pieData = @json($pieData);
   const polarLabels = @json($weekdayLabels);
@@ -55,7 +58,10 @@ $(function () {
 
   new Chart(document.getElementById('chartBar'), {
     type: 'bar',
-    data: { labels: barLabels, datasets: [{ label: 'Лайки', data: barData, backgroundColor: 'rgba(94,168,255,.55)' }] },
+    data: { labels: barLabels, datasets: [
+      { label: 'Лайки', data: barData, backgroundColor: 'rgba(255,193,7,.55)' },
+      { label: 'Дизлайки', data: barDataDislikes, backgroundColor: 'rgba(108,117,125,.55)' },
+    ] },
     options: { responsive: true, plugins: { legend: { labels: { color: '#ccc' } } }, scales: { x: { ticks: { color: '#aaa' } }, y: { ticks: { color: '#aaa' } } } }
   });
 

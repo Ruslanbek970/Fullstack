@@ -12,15 +12,19 @@
 
             <div class="mt-3">
                 <div class="small text-secondary mb-2">{{ __('site.roles_users_in_role') }}</div>
-                @forelse($role->users as $u)
-                    <span class="role-user-chip">
-                        <img src="{{ $u->avatarUrl() }}" alt="">
-                        <span>{{ $u->name }}</span>
-                        <span class="text-secondary">· {{ $u->email }}</span>
-                    </span>
-                @empty
-                    <span class="small text-secondary">—</span>
-                @endforelse
+                @if($role->name === 'user')
+                    <span class="small text-secondary">{{ __('site.roles_user_role_hidden') }}</span>
+                @else
+                    @forelse($role->users as $u)
+                        <span class="role-user-chip">
+                            <img src="{{ $u->avatarUrl() }}" alt="">
+                            <span>{{ $u->name }}</span>
+                            <span class="text-secondary">· {{ $u->email }}</span>
+                        </span>
+                    @empty
+                        <span class="small text-secondary">—</span>
+                    @endforelse
+                @endif
             </div>
         </div>
     @endforeach

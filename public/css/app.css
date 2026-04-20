@@ -1,0 +1,67 @@
+/* App-specific polish on top of Bootstrap 5 */
+
+:root {
+  --meme-surface: rgba(0, 0, 0, 0.18);
+  --meme-surface-border: rgba(255, 255, 255, 0.12);
+}
+
+[data-bs-theme="light"] {
+  --meme-surface: rgba(255, 255, 255, 0.7);
+  --meme-surface-border: rgba(0, 0, 0, 0.12);
+}
+
+.meme-card-surface {
+  background: var(--meme-surface);
+  border-color: var(--meme-surface-border) !important;
+  backdrop-filter: blur(6px);
+}
+
+.navbar .dropdown-menu {
+  border-color: var(--meme-surface-border);
+}
+
+.ad-banner-toolbar .btn {
+  border-color: var(--meme-surface-border);
+}
+
+.ad-banner-wrap {
+  padding: 14px 14px 12px;
+}
+
+.ad-banner-wrap.is-hidden {
+  display: none;
+}
+
+.ad-marquee-viewport {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--meme-surface-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.ad-marquee-strip {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: ad-marquee 16s linear infinite;
+}
+
+.ad-marquee-viewport.is-stopped .ad-marquee-strip {
+  animation-play-state: paused;
+}
+
+@keyframes ad-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-45%); }
+}
+
+/* Small visual improvements */
+.table.table-striped > :not(caption) > * > * {
+  border-bottom-color: var(--meme-surface-border);
+}
+
+.btn-outline-secondary {
+  --bs-btn-border-color: var(--meme-surface-border);
+}
+

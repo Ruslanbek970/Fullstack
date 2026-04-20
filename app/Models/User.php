@@ -66,9 +66,10 @@ class User extends Authenticatable
         $v = (string) ($this->updated_at?->getTimestamp() ?? $this->id);
 
         if ($this->avatar) {
-            $base = \Illuminate\Support\Facades\Storage::disk('public')->url($this->avatar);
+            $relative = ltrim(str_replace('\\', '/', (string) $this->avatar), '/');
+            $base = '/storage/'.$relative;
 
-            return $base.(str_contains($base, '?') ? '&' : '?').'v='.$v;
+            return $base.'?v='.$v;
         }
 
         $name = urlencode((string) $this->name);

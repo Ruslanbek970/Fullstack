@@ -32,12 +32,15 @@
                 @endauth
             </ul>
             <ul class="navbar-nav ms-auto align-items-lg-center gap-2 flex-wrap">
-                <li class="nav-item d-flex align-items-center gap-1 small">
-                    <a class="nav-link py-1 px-2 rounded @if($loc === 'ru') fw-bold text-warning @endif" href="{{ route('locale.switch', 'ru') }}">RU</a>
-                    <span class="text-secondary user-select-none">·</span>
-                    <a class="nav-link py-1 px-2 rounded @if($loc === 'en') fw-bold text-warning @endif" href="{{ route('locale.switch', 'en') }}">EN</a>
-                    <span class="text-secondary user-select-none">·</span>
-                    <a class="nav-link py-1 px-2 rounded @if($loc === 'kk') fw-bold text-warning @endif" href="{{ route('locale.switch', 'kk') }}">KZ</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle py-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ __('site.ui_language') }}: <span class="fw-semibold text-warning">{{ strtoupper($loc) }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><a class="dropdown-item @if($loc === 'ru') active @endif" href="{{ route('locale.switch', 'ru') }}">Русский (RU)</a></li>
+                        <li><a class="dropdown-item @if($loc === 'en') active @endif" href="{{ route('locale.switch', 'en') }}">English (EN)</a></li>
+                        <li><a class="dropdown-item @if($loc === 'kk') active @endif" href="{{ route('locale.switch', 'kk') }}">Қазақша (KZ)</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     @if($th === 'dark')
