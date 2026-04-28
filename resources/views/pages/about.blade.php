@@ -7,6 +7,9 @@
         <div class="p-4 p-md-5 border border-secondary rounded meme-card-surface">
             <h1 class="h3 mb-2">{{ __('site.about_title') }}</h1>
             <p class="text-secondary mb-4">{{ __('site.about_lead') }}</p>
+            <p class="small text-secondary mb-4">
+                {{ __('MEME HUB demonstrates JSON translations for long paragraphs: with this approach, the original sentence acts as the translation key, so large text blocks in Blade remain easier to read and maintain.') }}
+            </p>
 
             <div class="row g-3">
                 <div class="col-md-6">

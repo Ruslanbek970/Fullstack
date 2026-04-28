@@ -89,9 +89,7 @@ class Meme extends Model
         return ($this->media_type ?? self::MEDIA_IMAGE) === self::MEDIA_VIDEO;
     }
 
-    /**
-     * Колонка image: внешний URL или путь относительно public disk (memes/...).
-     */
+    
     public function mediaUrl(): ?string
     {
         if ($this->image === null || $this->image === '') {

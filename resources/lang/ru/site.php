@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'auth_register' => 'Регистрация',
+    'auth_login' => 'Вход',
+    'auth_name' => 'Имя',
+    'auth_email' => 'Email',
+    'auth_password' => 'Пароль',
+    'auth_create_account' => 'Создать аккаунт',
+    'auth_sign_in' => 'Войти',
+    'auth_already_have_account' => 'Уже есть аккаунт',
+    'auth_no_account' => 'Регистрация',
+    'auth_back_home' => 'На главную',
+    'auth_show_password' => 'Показать пароль', 
+
     'nav_brand' => 'MEME HUB',
     'nav_menu' => 'Меню',
     'nav_home' => 'Главная',

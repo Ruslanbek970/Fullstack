@@ -36,7 +36,7 @@ class AuthSessionController extends Controller
                 Log::error('Welcome mail failed', ['to' => $user->email, 'error' => $e->getMessage()]);
                 report($e);
             }
-
+#тут
             Auth::login($user);
 
             return redirect()->route('home')->with('message', 'Аккаунт создан, вы вошли как участник (member).');

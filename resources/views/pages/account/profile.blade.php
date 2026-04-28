@@ -10,16 +10,16 @@
         </div>
 
         <div class="row g-3">
-            <div class="col-md-4">
-                <div class="p-3 border border-secondary rounded meme-card-surface">
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <img src="{{ $user->avatarUrl() }}" alt="" width="56" height="56" class="rounded-circle border border-secondary">
+            <div class="col-md-5">
+                <div class="p-1 border border-secondary rounded meme-card-surface">
+                    <div class="d-flex align-items-center gap-1 mb-2">
+                        <img src="{{ $user->avatarUrl() }}" alt="" width="auto" height="50" class="rounded-circle border border-secondary">
                         <div>
                             <div class="fw-semibold">{{ $user->name }}</div>
                             <div class="small text-secondary">{{ $user->email }}</div>
                         </div>
                     </div>
-                    <div class="small text-secondary">Можно загрузить аватар (JPG/PNG/WebP до 5MB).</div>
+                    <div class="small text-secondary">Можно загрузить аватар </div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -52,6 +52,7 @@
                             <label class="form-label small">{{ __('site.profile_avatar') }}</label>
                             <input type="file" name="avatar" class="form-control bg-body text-body border-secondary" accept="image/*,.webp">
                         </div>
+                        
                     </div>
 
                     <div class="mt-3">

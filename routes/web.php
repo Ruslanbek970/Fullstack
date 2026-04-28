@@ -12,8 +12,7 @@ use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\UiPreferenceController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/ui/locale/{locale}', [UiPreferenceController::class, 'locale'])->name('locale.switch');
-Route::get('/ui/theme/{theme}', [UiPreferenceController::class, 'theme'])->name('theme.switch');
+Route::post('/ui/preferences', [UiPreferenceController::class, 'update'])->name('ui.preferences.update');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('pages.about');

@@ -32,22 +32,21 @@
                 @endauth
             </ul>
             <ul class="navbar-nav ms-auto align-items-lg-center gap-2 flex-wrap">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle py-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ __('site.ui_language') }}: <span class="fw-semibold text-warning">{{ strtoupper($loc) }}</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item @if($loc === 'ru') active @endif" href="{{ route('locale.switch', 'ru') }}">Русский (RU)</a></li>
-                        <li><a class="dropdown-item @if($loc === 'en') active @endif" href="{{ route('locale.switch', 'en') }}">English (EN)</a></li>
-                        <li><a class="dropdown-item @if($loc === 'kk') active @endif" href="{{ route('locale.switch', 'kk') }}">Қазақша (KZ)</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item">
-                    @if($th === 'dark')
-                        <a class="nav-link py-1 fs-5" href="{{ route('theme.switch', 'light') }}" title="{{ __('site.ui_theme_light') }}">☀️</a>
-                    @else
-                        <a class="nav-link py-1 fs-5" href="{{ route('theme.switch', 'dark') }}" title="{{ __('site.ui_theme_dark') }}">🌙</a>
-                    @endif
+                    <form action="{{ route('ui.preferences.update') }}" method="post" class="d-flex align-items-center gap-1">
+                        @csrf
+                    
+                        <select name="locale" class="form-select form-select-sm compact-select" onchange="this.form.submit()">
+                            <option value="ru" @selected($loc === 'ru')>RU</option>
+                            <option value="en" @selected($loc === 'en')>EN</option>
+                            <option value="kk" @selected($loc === 'kk')>KK</option>
+                        </select>
+                    
+                        <select name="theme" class="form-select form-select-sm compact-select" onchange="this.form.submit()">
+                            <option value="dark" @selected($th === 'dark')>🌙</option>
+                            <option value="light" @selected($th === 'light')>☀️</option>
+                        </select>
+                    </form>
                 </li>
                 @auth
                     <li class="nav-item d-flex align-items-center gap-2">

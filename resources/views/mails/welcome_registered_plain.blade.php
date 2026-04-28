@@ -3,3 +3,4 @@
 {{ __('site.mail_welcome_body') }}
 
 {{ __('site.mail_welcome_footer') }}
+

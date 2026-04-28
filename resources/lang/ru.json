@@ -1,0 +1,3 @@
+{
+    "MEME HUB demonstrates JSON translations for long paragraphs: with this approach, the original sentence acts as the translation key, so large text blocks in Blade remain easier to read and maintain.": "MEME HUB показывает JSON-переводы для длинных абзацев: в этом подходе исходное предложение используется как ключ, поэтому большие блоки текста в Blade читаются и поддерживаются проще."
+}

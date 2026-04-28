@@ -76,4 +76,9 @@ class User extends Authenticatable
 
         return 'https://ui-avatars.com/api/?name='.$name.'&background=1a1a1a&color=ffc107&size=128';
     }
+    public function detail()
+{
+  
+    return $this->hasOne(UserDetail::class);
+}
 }

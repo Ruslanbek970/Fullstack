@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'auth_register' => 'Register',
+    'auth_login' => 'Login',    
+    'auth_name' => 'Name',
+    'auth_email' => 'Email',
+    'auth_password' => 'Password',  
+    'auth_create_account' => 'Create account',
+    'auth_sign_in' => 'Sign in',    
+    'auth_already_have_account' => 'Already have an account?',
+    'auth_no_account' => 'Register',
+    'auth_back_home' => 'Back to home', 
+    'auth_show_password' => 'Show password',
+    
     'nav_brand' => 'MEME HUB',
     'nav_menu' => 'Menu',
     'nav_home' => 'Home',

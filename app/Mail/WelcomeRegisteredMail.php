@@ -22,12 +22,12 @@ class WelcomeRegisteredMail extends Mailable
             subject: __('site.mail_welcome_subject'),
         );
     }
-
+#тут
     public function content(): Content
     {
         return new Content(
-            html: 'emails.welcome-registered',
-            text: 'emails.welcome-registered-text',
+            html: 'mails.welcome_registered',
+            text: 'mails.welcome_registered_plain',
             with: [
                 'user' => $this->user,
             ],

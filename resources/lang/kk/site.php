@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'auth_register' => 'Тіркелу',
+    'auth_login' => 'Кіру',
+    'auth_name' => 'Аты',
+    'auth_email' => 'Email',
+    'auth_password' => 'Құпиясөз',
+    'auth_create_account' => 'Аккаунт ашу',
+    'auth_sign_in' => 'Кіру',
+    'auth_already_have_account' => 'Аккаунтыңыз бар ма?',
+    'auth_no_account' => 'Тіркелу',
+    'auth_back_home' => 'Басты бет',
+    'auth_show_password' => 'Құпиясөзді көрсету',
+
     'nav_brand' => 'MEME HUB',
     'nav_menu' => 'Мәзір',
     'nav_home' => 'Басты бет',

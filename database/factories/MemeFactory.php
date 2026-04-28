@@ -6,9 +6,7 @@ use App\Models\Meme;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Meme>
- */
+
 class MemeFactory extends Factory
 {
     public function definition(): array

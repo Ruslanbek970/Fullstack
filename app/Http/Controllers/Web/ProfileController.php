@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\Models\UserDetail; 
 
 class ProfileController extends Controller
 {
@@ -31,11 +32,22 @@ class ProfileController extends Controller
 
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
+            
             if ($file && $file->isValid()) {
+                
                 if ($user->avatar) {
                     Storage::disk('public')->delete($user->avatar);
-                }
-                $validated['avatar'] = $file->store('avatars', 'public');
+                }       
+                $path = $file->store('avatars', 'public');
+                $validated['avatar'] = $path;     
+                UserDetail::updateOrCreate(
+                    ['user_id' => $user->id], 
+                    [                 
+                        'avatar_filename' => basename($path), 
+                        'original_name' => $file->getClientOriginalName() 
+                    ]
+                );
+              
             }
         } else {
             unset($validated['avatar']);
@@ -47,4 +59,3 @@ class ProfileController extends Controller
         return back()->with('message', 'Профиль обновлён.');
     }
 }
-

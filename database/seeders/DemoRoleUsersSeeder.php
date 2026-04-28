@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class DemoRoleUsersSeeder extends Seeder
 {
-    /**
-   
-     */
+    
     public function run(): void
     {
         $accounts = [
